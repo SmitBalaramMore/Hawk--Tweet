@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title%}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'style.css'%}">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+  <nav id="navbar">
+    <h2>HAWK</h2>
+    <div id="navbarbtn">
+      <a href=""><i class="ri-home-4-line"></i> Home</a>
+      <a href=""><i class="ri-login-box-line"></i> Login</a>
+      <a href="">Register</a>
+      <input id="searchbar" type="text" placeholder="Search...."><button><i class="ri-search-eye-line"></i></button>
+    </div>
+  </nav>
+  {% block content %}
+  <h1>hello</h1>
+  {% endblock %}
+</body>
+
+</html>
