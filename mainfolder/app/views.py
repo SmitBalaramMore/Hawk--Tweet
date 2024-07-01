@@ -5,11 +5,6 @@ from django.shortcuts import get_object_or_404,message
 
 # Create your views here.
 
-
-def load(request):
-    return render(request,"main.html")
-
-
 def ALL_Tweets(request):
     tweets=Tweet.objects.all().order_by('-created_at')
     return render(request,"alltweets.html",{'tweets':tweets})
@@ -38,15 +33,17 @@ def Edit_tweets(request,tweet_id):
           return redirect ("ALL_Tweets") 
     else:
         forms=TweetForm(instance=tweet)
-    return render (request,"main.html",{"forms":forms})
+    return render (request,"alltweets.html",{"forms":forms})
 
 
 def Delete_tweets(request,tweet_id):
     tweet=get_object_or_404(Tweet,pk=tweet_id,user=request.user)
-    tweet.delete()
-    return redirect("ALL_tweets")
+    if request.method=="POST":
+        tweet.delete()
+        return redirect("ALL_Tweets")
+    return render(request,"tweet_confrim_delete.html",{'tweet':tweet})
 
 
         
 
-
+ 

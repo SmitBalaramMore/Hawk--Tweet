@@ -22,5 +22,9 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",views.load)
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("",views.ALL_Tweets,name="alltweets"),
+    path("createtweets",views.Create_Tweets,name="createtweets"),
+    path("Edittweets",views.Edit_tweets,name="edittweets"),
+    path("Deletetweets",views.Delete_tweets,name="Deletetweets")
+] 
+urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
